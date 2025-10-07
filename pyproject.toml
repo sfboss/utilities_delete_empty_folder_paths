@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "delete-empty-dirs"
+version = "0.1.0"
+description = "Safe CLI for deleting directories that are truly empty."
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "Proprietary"}
+authors = [
+  {name = "Utilities Delete Empty Folder Paths Authors"}
+]
+dependencies = [
+  "typer>=0.9",
+  "rich>=13.3",
+  "platformdirs>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-mock>=3.10",
+]
+
+[project.scripts]
+ded = "delete_empty_dirs.cli:main_entry"
+"delete-empty-dirs" = "delete_empty_dirs.cli:main_entry"
+"delete_empties" = "delete_empty_dirs.cli:main_entry"
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
